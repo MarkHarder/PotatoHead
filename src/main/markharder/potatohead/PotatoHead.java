@@ -17,6 +17,7 @@ import java.io.IOException;
  */
 public class PotatoHead extends JComponent {
     private BufferedImage background;
+    private Inventory inventory;
 
     public static PotatoHead spud;
 
@@ -26,6 +27,8 @@ public class PotatoHead extends JComponent {
         } catch (Exception e) {
             e.printStackTrace();
         }
+
+        inventory = new Inventory();
     }
 
     public void paint(Graphics g) {
@@ -33,6 +36,8 @@ public class PotatoHead extends JComponent {
         g.fillRect(0, 0, 480, 600);
 
         g.drawImage(background, 0, 0, 400, 600, 0, 0, 400, 600, null);
+
+        inventory.paint(g);
     }
 
     /**

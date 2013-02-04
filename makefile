@@ -10,7 +10,7 @@ run: all
 all: $(classes)
 
 clean:
-	$(RM) *.class
+	$(RM) src/main/markharder/potatohead/*.class
 
 %.class: %.java
-	$(JAVAC) $<
+	$(JAVAC) -cp src/main $<
