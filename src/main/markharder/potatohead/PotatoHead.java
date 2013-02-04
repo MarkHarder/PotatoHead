@@ -19,6 +19,8 @@ public class PotatoHead extends JComponent {
     private BufferedImage background;
     private Inventory inventory;
 
+    private static boolean running = false;
+
     public static PotatoHead spud;
 
     public PotatoHead() {
@@ -29,6 +31,24 @@ public class PotatoHead extends JComponent {
         }
 
         inventory = new Inventory();
+    }
+
+    /**
+     * Stop the game from running
+     */
+    public void stop() {
+        running = false;
+    }
+
+    /**
+     * The loop that continuously paints the components
+     */
+    public void start() {
+        running = true;
+
+        while (running) {
+            repaint();
+        }
     }
 
     public void paint(Graphics g) {
@@ -58,6 +78,9 @@ public class PotatoHead extends JComponent {
         frame.setLocationRelativeTo(null);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setVisible(true);
+        frame.addMouseMotionListener(new Mouse());
+
+        spud.start();
     }
 }
 

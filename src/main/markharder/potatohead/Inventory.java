@@ -1,6 +1,7 @@
 package markharder.potatohead;
 
 import java.awt.Graphics;
+import java.awt.Color;
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.io.File;
@@ -43,6 +44,16 @@ public class Inventory {
      */
     public void paint(Graphics g) {
         for (Accessory a : accessories) {
+            if (a.contains(Mouse.mse)) {
+                int x = (int) a.getX();
+                int y = (int) a.getY();
+                int width = (int) a.getWidth();
+                int height = (int) a.getHeight();
+
+                g.setColor(new Color(255, 255, 255, 60));
+                g.fillRect(x, y, width, height);
+            }
+
             a.paint(g);
         }
 
