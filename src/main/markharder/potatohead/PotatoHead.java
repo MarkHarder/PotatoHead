@@ -8,6 +8,7 @@ import java.awt.image.BufferedImage;
 import javax.imageio.ImageIO;
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 
 /**
  * A potato head accessorizor
@@ -18,6 +19,7 @@ import java.io.IOException;
 public class PotatoHead extends JComponent {
     private BufferedImage background;
     private Inventory inventory;
+    private ArrayList<BodyArea> bodyAreas;
 
     private static boolean running = false;
 
@@ -31,6 +33,13 @@ public class PotatoHead extends JComponent {
         }
 
         inventory = new Inventory();
+
+        bodyAreas = new ArrayList<BodyArea>();
+
+        // create the three body areas to place accessories on
+        bodyAreas.add(new BodyArea(145, 160, 120, 120));
+        bodyAreas.add(new BodyArea(145, 245, 120, 120));
+        bodyAreas.add(new BodyArea(145, 360, 120, 120));
     }
 
     /**
@@ -58,6 +67,10 @@ public class PotatoHead extends JComponent {
         g.drawImage(background, 0, 0, 400, 600, 0, 0, 400, 600, null);
 
         inventory.paint(g);
+
+        for (BodyArea b : bodyAreas) {
+            b.paint(g);
+        }
     }
 
     /**
