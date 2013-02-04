@@ -60,6 +60,13 @@ public class PotatoHead extends JComponent {
         }
     }
 
+    /**
+     * Calls the click methods of all the components
+     */
+    public void click() {
+        inventory.click();
+    }
+
     public void paint(Graphics g) {
         g.setColor(new Color(210, 148, 68));
         g.fillRect(0, 0, 480, 600);
@@ -71,6 +78,8 @@ public class PotatoHead extends JComponent {
         for (BodyArea b : bodyAreas) {
             b.paint(g);
         }
+
+        Mouse.paint(g);
     }
 
     /**
@@ -91,7 +100,9 @@ public class PotatoHead extends JComponent {
         frame.setLocationRelativeTo(null);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setVisible(true);
-        frame.addMouseMotionListener(new Mouse());
+        Mouse m = new Mouse();
+        frame.addMouseMotionListener(m);
+        frame.addMouseListener(m);
 
         spud.start();
     }

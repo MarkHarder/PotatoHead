@@ -42,6 +42,25 @@ public class Accessory extends Rectangle {
     }
 
     /**
+     * A copy constructor
+     *
+     * @param a the accessory to copy
+     */
+    public Accessory(Accessory a) {
+        setBounds((int) a.getX(), (int) a.getY(), (int) a.getWidth(), (int) a.getHeight());
+        this.id = a.getID();
+    }
+
+    /**
+     * return the id
+     *
+     * @return the accessory id
+     */
+    public int getID() {
+        return id;
+    }
+
+    /**
      * Paint the accessory
      *
      * @param g The graphics object drawn on
