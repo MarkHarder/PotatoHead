@@ -65,6 +65,10 @@ public class PotatoHead extends JComponent {
      */
     public void click() {
         inventory.click();
+
+        for (BodyArea b : bodyAreas) {
+            b.click();
+        }
     }
 
     public void paint(Graphics g) {
