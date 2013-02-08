@@ -100,6 +100,7 @@ public class PotatoHead extends JComponent {
         frame.add(spud);
         frame.pack();
         frame.setSize(480, 600);
+        frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
         frame.setResizable(false);
         frame.setLocationRelativeTo(null);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
