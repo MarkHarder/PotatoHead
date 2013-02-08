@@ -25,6 +25,13 @@ public class PotatoHead extends JComponent {
 
     public static PotatoHead spud;
 
+    public static int WIDTH = 480;
+    public static int HEIGHT = 600;
+    public static int SCREEN_WIDTH;
+    public static int SCREEN_HEIGHT;
+    public static int CORNER_X;
+    public static int CORNER_Y;
+
     public PotatoHead() {
         try {
             background = ImageIO.read(new File("res/potato.png"));
@@ -72,10 +79,13 @@ public class PotatoHead extends JComponent {
     }
 
     public void paint(Graphics g) {
-        g.setColor(new Color(210, 148, 68));
-        g.fillRect(0, 0, 480, 600);
+        g.setColor(new Color(0, 0, 0));
+        g.fillRect(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
 
-        g.drawImage(background, 0, 0, 400, 600, 0, 0, 400, 600, null);
+        g.setColor(new Color(210, 148, 68));
+        g.fillRect(CORNER_X, CORNER_Y, 480, 600);
+
+        g.drawImage(background, CORNER_X, CORNER_Y, CORNER_X + 400, CORNER_Y + 600, 0, 0, 400, 600, null);
 
         inventory.paint(g);
 
@@ -93,14 +103,21 @@ public class PotatoHead extends JComponent {
      */
     public static void main(String[] args) {
         JFrame frame = new JFrame();
-        spud = new PotatoHead();
+
+        frame.setUndecorated(true);
+        frame.pack();
 
         // set up the window
-        frame.setUndecorated(true);
-        frame.add(spud);
-        frame.pack();
-        frame.setSize(480, 600);
         frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
+
+        SCREEN_WIDTH = frame.getWidth();
+        SCREEN_HEIGHT = frame.getHeight();
+        CORNER_X = (SCREEN_WIDTH - WIDTH) / 2;
+        CORNER_Y = (SCREEN_HEIGHT - HEIGHT) / 2;
+
+        spud = new PotatoHead();
+
+        frame.add(spud);
         frame.setResizable(false);
         frame.setLocationRelativeTo(null);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

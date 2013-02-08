@@ -37,7 +37,7 @@ public class Accessory extends Rectangle {
      * @param id which accessory it is
      */
     public Accessory(int x, int y, int width, int height, int id) {
-        setBounds(x, y, width, height);
+        setBounds(PotatoHead.CORNER_X + x, PotatoHead.CORNER_Y + y, width, height);
         this.id = id;
     }
 

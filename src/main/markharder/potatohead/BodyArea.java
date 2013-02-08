@@ -23,7 +23,7 @@ public class BodyArea extends Rectangle {
      * @param height the body area height
      */
     public BodyArea(int x, int y, int width, int height) {
-        setBounds(x, y, width, height);
+        setBounds(PotatoHead.CORNER_X + x, PotatoHead.CORNER_Y + y, width, height);
     }
 
     /**

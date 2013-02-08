@@ -45,8 +45,8 @@ public class Inventory {
      * Pick up and put down accessories or scroll up and down
      */
     public void click() {
-        Rectangle upArrow = new Rectangle(400, 0, 80, 40);
-        Rectangle downArrow = new Rectangle(400, 560, 80, 40);
+        Rectangle upArrow = new Rectangle(PotatoHead.CORNER_X + 400, PotatoHead.CORNER_Y + 0, 80, 40);
+        Rectangle downArrow = new Rectangle(PotatoHead.CORNER_X + 400, PotatoHead.CORNER_Y + 560, 80, 40);
 
         if (upArrow.contains(Mouse.mse)) {
             scrollUp();
@@ -99,7 +99,8 @@ public class Inventory {
      * @param g The graphics object drawn on
      */
     public void paint(Graphics g) {
-        for (Accessory a : accessories) {
+        for (int i = scrollIndex; i < scrollIndex + 6; i++) {
+            Accessory a = accessories.get(i);
             if (a.contains(Mouse.mse)) {
                 int x = (int) a.getX();
                 int y = (int) a.getY();
@@ -114,8 +115,8 @@ public class Inventory {
         }
 
         // draw up and down arrows
-        g.drawImage(tilesetArrows, 400, 0, 480, 40, 0, 0, 80, 40, null);
-        g.drawImage(tilesetArrows, 400, 560, 480, 600, 0, 40, 80, 80, null);
+        g.drawImage(tilesetArrows, PotatoHead.CORNER_X + 400, PotatoHead.CORNER_Y + 0, PotatoHead.CORNER_X + 480, PotatoHead.CORNER_Y + 40, 0, 0, 80, 40, null);
+        g.drawImage(tilesetArrows, PotatoHead.CORNER_X + 400, PotatoHead.CORNER_Y + 560, PotatoHead.CORNER_X + 480, PotatoHead.CORNER_Y + 600, 0, 40, 80, 80, null);
     }
 }
 
