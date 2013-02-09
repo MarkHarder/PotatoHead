@@ -1,5 +1,6 @@
 package markharder.potatohead;
 
+import java.lang.ClassLoader;
 import javax.imageio.ImageIO;
 import java.awt.Graphics;
 import java.awt.Rectangle;
@@ -21,7 +22,7 @@ public class Accessory extends Rectangle {
 
     static {
         try {
-            tileset_features = ImageIO.read(new File("res/tileset_features.png"));
+            tileset_features = ImageIO.read(Accessory.class.getResource("/res/tileset_features.png"));
         } catch (IOException e) {
             e.printStackTrace();
         }

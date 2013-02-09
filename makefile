@@ -5,7 +5,7 @@ classes = $(sources:.java=.class)
 default: run
 
 run: all
-	java -cp src/main markharder/potatohead/PotatoHead
+	java -cp bin markharder/potatohead/PotatoHead
 
 all: $(classes)
 
@@ -13,4 +13,7 @@ clean:
 	$(RM) src/main/markharder/potatohead/*.class
 
 %.class: %.java
-	$(JAVAC) -cp src/main $<
+	$(JAVAC) -d bin/ -cp src/main $<
+
+jar: all
+	jar cfm PotatoHead.jar MANIFEST.MF -C bin . res; java -jar PotatoHead.jar

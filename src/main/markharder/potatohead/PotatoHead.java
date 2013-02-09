@@ -36,8 +36,8 @@ public class PotatoHead extends JComponent {
 
     public PotatoHead() {
         try {
-            background = ImageIO.read(new File("res/potato.png"));
-            quitButton = ImageIO.read(new File("res/quit_button.png"));
+            background = ImageIO.read(getClass().getResource("/res/potato.png"));
+            quitButton = ImageIO.read(getClass().getResource("/res/quit_button.png"));
         } catch (Exception e) {
             e.printStackTrace();
         }

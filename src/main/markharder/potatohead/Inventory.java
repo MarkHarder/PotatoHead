@@ -29,7 +29,7 @@ public class Inventory {
      */
     public Inventory() {
         try {
-            tilesetArrows = ImageIO.read(new File("res/tileset_arrows.png"));
+            tilesetArrows = ImageIO.read(getClass().getResource("/res/tileset_arrows.png"));
         } catch (IOException e) {
             e.printStackTrace();
         }
