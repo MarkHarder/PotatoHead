@@ -3,6 +3,7 @@ package markharder.potatohead;
 import javax.swing.JComponent;
 import javax.swing.JFrame;
 import java.awt.Graphics;
+import java.awt.Rectangle;
 import java.awt.Color;
 import java.awt.image.BufferedImage;
 import javax.imageio.ImageIO;
@@ -18,6 +19,7 @@ import java.util.ArrayList;
  */
 public class PotatoHead extends JComponent {
     private BufferedImage background;
+    private BufferedImage quitButton;
     private Inventory inventory;
     private ArrayList<BodyArea> bodyAreas;
 
@@ -35,6 +37,7 @@ public class PotatoHead extends JComponent {
     public PotatoHead() {
         try {
             background = ImageIO.read(new File("res/potato.png"));
+            quitButton = ImageIO.read(new File("res/quit_button.png"));
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -76,6 +79,11 @@ public class PotatoHead extends JComponent {
         for (BodyArea b : bodyAreas) {
             b.click();
         }
+
+        Rectangle quitBounds = new Rectangle(SCREEN_WIDTH / 2 - 75, CORNER_Y + HEIGHT, 150, 50);
+        if (quitBounds.contains(Mouse.mse)) {
+            stop();
+        }
     }
 
     public void paint(Graphics g) {
@@ -94,6 +102,14 @@ public class PotatoHead extends JComponent {
         }
 
         Mouse.paint(g);
+
+        Rectangle quitBounds = new Rectangle(SCREEN_WIDTH / 2 - 75, CORNER_Y + HEIGHT, 150, 50);
+
+        g.drawImage(quitButton, (int) quitBounds.getX(), (int) quitBounds.getY(), (int) (quitBounds.getX() + quitBounds.getWidth()), (int) (quitBounds.getY() + quitBounds.getHeight()), 0, 0, 150, 50, null);
+        if (quitBounds.contains(Mouse.mse)) {
+            g.setColor(new Color(255, 255, 255, 60));
+            g.fillRect((int) quitBounds.getX(), (int) quitBounds.getY(), (int) quitBounds.getWidth(), (int) quitBounds.getHeight());
+        }
     }
 
     /**
@@ -127,6 +143,7 @@ public class PotatoHead extends JComponent {
         frame.addMouseListener(m);
 
         spud.start();
+        System.exit(0);
     }
 }
 
